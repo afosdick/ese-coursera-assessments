@@ -19,19 +19,17 @@
 #ifndef __COURSE1_H__
 #define __COURSE1_H__
 
-#define BASE_2  (2)
-#define BASE_3  (3)
-#define BASE_8  (8)
-#define BASE_10 (10)
-#define BASE_16 (16)
+#include <stdint.h>
 
 #define DATA_SET_SIZE_W (10)
-#define SET_SIZE (32)
-#define SET_SIZE_W (8)
-#define SET_SIZE_W (8)
-#define TEST_MOVE_LENGTH (16)
-#define TEST_SET_LENGTH (32)
-#define TEST_ZERO_LENGTH (16)
+#define MEM_SET_SIZE_B  (32)
+#define MEM_SET_SIZE_W  (8)
+#define MEM_ZERO_LENGTH (16)
+
+#define TEST_MEMMOVE_LENGTH (16)
+#define TEST_ERROR          (1)
+#define TEST_NO_ERROR       (0)
+#define TESTCOUNT           (8)
 
 /**
  * @brief function to run course1 materials
@@ -42,18 +40,27 @@
  *
  * @return void
  */
-void course1();
+void course1(void);
 
 /**
  * @brief function to run course1 data operations
  * 
  * This function calls the my_itoa and my_atoi functions to validate they
- * work as expected. These call functions that the learner defines. They will
- * have to keep their function definitions consistent to the assignment. 
+ * work as expected for hexadecimal numbers.
  *
  * @return void
  */
-void test_data();
+int8_t test_data1();
+
+/**
+ * @brief function to run course1 data operations
+ * 
+ * This function calls the my_itoa and my_atoi functions to validate they
+ * work as expected for decimal numbers. 
+ *
+ * @return void
+ */
+int8_t test_data2();
 
 /**
  * @brief function to test the non-overlapped memmove operation
@@ -64,7 +71,7 @@ void test_data();
  *
  * @return void
  */
-void test_memmove1();
+int8_t test_memmove1();
 
 /**
  * @brief function to test an overlapped Memmove operation Part 1
@@ -76,10 +83,10 @@ void test_memmove1();
  *
  * @return void
  */
-void test_memmove2();
+int8_t test_memmove2();
 
 /**
- * @brief function to run course1 data test part 2
+ * @brief function to run course1 memmove overlapped test
  * 
  * This function calls the memmove routine with two sets of data that not
  * over lap. Overlap exists at the start of the source and the end of the
@@ -88,18 +95,7 @@ void test_memmove2();
  *
  * @return void
  */
-void test_memmove3();
-
-/**
- * @brief function to run course1 memmove test 
- * 
- * This function calls the memory.c and stats.c functions to validate they
- * work as expected. These call functions that the learner defines. They will
- * have to keep their function definitions consistent to the assignment. 
- *
- * @return void
- */
-void test_memcopy();
+int8_t test_memmove3();
 
 /**
  * @brief function to test the memcopy functionality
@@ -109,7 +105,7 @@ void test_memcopy();
  *
  * @return void
  */
-void test_memory4();
+int8_t test_memcopy();
 
 /**
  * @brief function to test the memset and memzero functionality
@@ -119,7 +115,7 @@ void test_memory4();
  *
  * @return void
  */
-void test_memset();
+int8_t test_memset();
 
 /**
  * @brief function to test the reverse functionality
@@ -129,7 +125,7 @@ void test_memset();
  *
  * @return void
  */
-void test_reverse();
+int8_t test_reverse();
 
 #endif /* __COURSE1_H__ */
 
