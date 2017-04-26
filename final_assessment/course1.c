@@ -19,6 +19,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include "platform.h"
 #include "course1.h"
 #include "memory.h"
 #include "data.h"
@@ -38,11 +39,12 @@ int8_t test_data1() {
     return TEST_ERROR;
   }
 
-  printf("  Initial number: %d\n", num);  
   digits = my_itoa( num, ptr, BASE_16);   
   value = my_atoi( ptr, digits, BASE_16);
+  #ifdef VERBOSE
+  printf("  Initial number: %d\n", num);  
   printf("  Final Decimal number: %d\n", value);  
-  
+  #endif
   free_words( (uint32_t*)ptr );
 
   if ( value != num )
@@ -66,11 +68,12 @@ int8_t test_data2() {
     return TEST_ERROR;
   }
 
-  printf("  Initial Decimal number: %d\n", num);  
   digits = my_itoa( num, ptr, BASE_10);
   value = my_atoi( ptr, digits, BASE_10);
+  #ifdef VERBOSE
+  printf("  Initial Decimal number: %d\n", num);  
   printf("  Final Decimal number: %d\n", value);  
-
+  #endif
   free_words( (uint32_t*)ptr );
 
   if ( value != num )
